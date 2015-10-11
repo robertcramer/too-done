@@ -2,6 +2,8 @@ require "too_done/version"
 require "too_done/init_db"
 require "too_done/user"
 require "too_done/session"
+require "too_done/task"
+require "too_done/list"
 
 require "thor"
 require "pry"
@@ -15,6 +17,7 @@ module TooDone
     option :date, :aliases => :d,
       :desc => "A Due Date in YYYY-MM-DD format."
     def add(task)
+      
       # find or create the right todo list
       # create a new item under that list, with optional date
     end
