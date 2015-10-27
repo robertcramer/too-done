@@ -17,15 +17,15 @@ module TooDone
     option :date, :aliases => :d,
       :desc => "A Due Date in YYYY-MM-DD format."
     def add(task)
-      puts "What is your new task?"
-      list = List.find_or_create_by(user_id: current_user.id)
+
+      list = List.find_or_create_by(user_id: current_user.id, name: options[:list])
 
       add_task = Task.create(list_id: list.id,
-                              date: options[:date],
+                              due_date: DateTime.parse(options[:date]),
                               name: task)
       binding.pry
 
-      puts "New Task: #{add_task}"
+      puts "New Task: #{add_task.name}"
       # find or create the right todo list
       # create a new item under that list, with optional date
     end
